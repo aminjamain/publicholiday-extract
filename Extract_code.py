@@ -72,25 +72,25 @@ if extracted_data:
 else:
     print("No table data found for inspection.")
 
-# Create a DataFrame and save it to an Excel file
-# if holidays:
-#     df = pd.DataFrame(holidays)
-#     output_path = "Public_Holidays_2025.xlsx"
-#     df.to_excel(output_path, index=False)
-#     print(f"\nPublic holidays data has been saved to {output_path}")
-# else:
-#     print("\nNo public holiday data found in the table.")
-
-# Create a DataFrame and group by "State Holiday"
+#Create a DataFrame and save it to an Excel file
 if holidays:
     df = pd.DataFrame(holidays)
     output_path = "Public_Holidays_2025.xlsx"
-
-    with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
-        for state, group in df.groupby("State Holiday"):
-            # Save each group (state) to a separate sheet in the Excel file
-            group.to_excel(writer, index=False, sheet_name=state[:31])  # Sheet names max 31 chars
-
-    print(f"\nPublic holidays data has been saved to {output_path} with separate sheets based on 'State Holiday'.")
+    df.to_excel(output_path, index=False)
+    print(f"\nPublic holidays data has been saved to {output_path}")
 else:
     print("\nNo public holiday data found in the table.")
+
+# Create a DataFrame and group by "State Holiday"
+# if holidays:
+#     df = pd.DataFrame(holidays)
+#     output_path = "Public_Holidays_2025.xlsx"
+
+#     with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
+#         for state, group in df.groupby("State Holiday"):
+#             # Save each group (state) to a separate sheet in the Excel file
+#             group.to_excel(writer, index=False, sheet_name=state[:31])  # Sheet names max 31 chars
+
+#     print(f"\nPublic holidays data has been saved to {output_path} with separate sheets based on 'State Holiday'.")
+# else:
+#     print("\nNo public holiday data found in the table.")
